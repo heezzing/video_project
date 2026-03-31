@@ -1,0 +1,22 @@
+# 환경변수
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# 동영상/음성 파일 (용량 큼)
+*.mp4
+*.mp3
+*.wav
+
+# 슬라이드 이미지
+slides/
+avatar/
+
+# 출력 폴더
+output/
+
+# macOS
+.DS_Store
