@@ -12,13 +12,11 @@ Claude AI와의 대화(바이브코딩)로 제작한 PPT 설명 영상 자동화
 video_project/
 ├── 유튜브_콘텐츠제작용_슬라이드.pdf   # 원본 슬라이드 PDF
 ├── TTS_대본_완성본.txt                 # 슬라이드별 TTS 대본 ([슬라이드 N] 태그 구분)
-├── avatar.png                          # 버추얼 아바타 이미지 (선택)
 ├── 1.mp4 ~ 6.mp4                       # 인트로 영상 소스 클립
 ├── .env                                # OpenAI API 키
 ├── venv/                               # Python 가상환경
 ├── slides/                             # 추출된 슬라이드 이미지 (slide_01.png ~ slide_20.png)
 ├── audio/                              # 생성된 TTS 음성 (audio_01.mp3 ~ audio_20.mp3)
-├── avatar/                             # 아바타 입 상태 이미지
 ├── output/                             # 최종 영상 출력 폴더
 │   ├── final_video.mp4                 # 오버레이 없는 원본 영상
 │   └── final_video_sub.mp4            # 오버레이 적용 최종 완성본 ✅
@@ -99,26 +97,6 @@ video_project/
 
 ---
 
-## 버추얼 아바타 영상 (선택)
-
-아바타와 슬라이드를 좌우 분할한 영상을 만들려면:
-
-```bash
-# 1. 입 상태 이미지 생성 (avatar.png 필요)
-./venv/bin/python scripts/4_prepare_mouth.py
-
-# 2. 슬라이드별 아바타+슬라이드 합성 클립 생성 (테스트)
-./venv/bin/python scripts/5_make_avatar_clips.py --test
-
-# 3. 전체 생성
-./venv/bin/python scripts/5_make_avatar_clips.py
-
-# 4. 최종 이어붙이기
-./venv/bin/python scripts/6_concat_final.py
-```
-
----
-
 ## 환경 설정
 
 ### 가상환경 활성화
@@ -174,9 +152,5 @@ pip install openai python-dotenv mediapipe librosa numpy pillow
 |------|------|------|
 | AI 코딩 | Claude AI (바이브코딩) | 전체 파이프라인 코드 생성 |
 | TTS | OpenAI TTS API (tts-1, nova) | 대본 → 슬라이드별 음성 자동 변환 |
-| 아바타 | Higgsfield | 아바타 영상 생성 |
 | 영상 합성 | ffmpeg | 슬라이드·음성·오버레이 합성 및 편집 |
-| 얼굴 감지 | OpenCV Haar Cascade | 아바타 입 위치 감지 |
-| 음성 분석 | librosa | 오디오 진폭 분석 |
-| 이미지 처리 | Pillow | 아바타 이미지 합성 |
 | 언어 | Python 3.12 | 전체 자동화 스크립트 |
